@@ -99,6 +99,7 @@ Objects provide an interface to other code that wants to use them but maintain t
      width="450" 
      height="320" />
 <figcaption>Encapsulation Diagram for Striker Class</figcaption>
+<br>
 </figure>
 
 This is a useful feature because it enables the programmer to change the internal implementation of an object without having to find and update all the code that uses it: it creates a kind of firewall between this object and the rest of the system.
