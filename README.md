@@ -102,12 +102,12 @@ class Goalie : extends Player
         save()
 ```
 
-In this case, Player class is the `parent` class of both Goalie and Striker classes. Conversely, Goalie and Striker classes are `child` classes of  Player class. 
+In this case, Player class is the **parent class** of both Goalie and Striker classes. Conversely, Goalie and Striker classes are **child classes** of Player class. 
 
-We intentionally define the method run() in all three classes. The reason is that we want to have different running styles for the goalie and striker. And there is a default running style for general players. This feature - when a method has the same name but a different implementation in different classes - is called `polymorphism`. When a method in a child class replaces the parent class’s implementation, we say that the child class `overrides` the version in the parent class. 
+We intentionally define the method run() in all three classes. The reason is that we want to have different running styles for the goalie and striker. And there is a default running style for general players. This feature - when a method has the same name but a different implementation in different classes - is called **polymorphism**. When a method in a child class replaces the parent class’s implementation, we say that the child class **oerrides** the version in the parent class. 
 
 ### **Encapsulation<a name="Encapsulation"></a>**
-Objects provide an interface to other code that wants to use them but maintain their internal state. The object's internal state is kept private, meaning it can only be accessed by its own methods, not from other objects. Keeping an object's internal state private and generally making a clear division between its public interface and its private internal state is called `encapsulation`.
+Objects provide an interface to other code that wants to use them but maintain their internal state. The object's internal state is kept private, meaning it can only be accessed by its own methods, not from other objects. Keeping an object's internal state private and generally making a clear division between its public interface and its private internal state is called **encapsulation**.
 
 <img src="img/EncapsulationDiagram.png" 
      width="450" 
@@ -118,7 +118,7 @@ $~$
 
 This is a useful feature because it enables the programmer to change the internal implementation of an object without having to find and update all the code that uses it: it creates a kind of firewall between this object and the rest of the system.
 
-In many OOP languages, we can prevent other code from accessing an object's internal state by marking some properties as `private`. It will generate an error if code outside the object tries to access them.
+In many OOP languages, we can prevent other code from accessing an object's internal state by marking some properties as **private**. It will generate an error if code outside the object tries to access them.
 
 ## **Unity and ML-Agents<a name="UnityAndMLAgents"></a>**
 There are a lot of online [tutorials](https://learn.unity.com/project/getting-started?uv=2020.3&courseId=5cf96c41edbc2a2ca6e8810f) and [documentations](https://docs.unity3d.com/Manual/index.html) that would help familiarize yourself with Unity. In this section, I only focus on the concepts related to this specific repository. 
@@ -135,9 +135,9 @@ public class NewBehaviourScript : MonoBehaviour
     void Update() { }
 }
 ```
-Now, we have a behaviour script for the game object it will be placed on. This script contains a class `MyBehaviourScript,` which is inherited from its parent class `MonoBehavior`. Start() and Update() functions are the methods of `Monobehavior`'s parent class `Behaviour` class. 
+Now, we have a behaviour script for the game object it will be placed on. This script contains a class **MyBehaviourScript**. The `:` suggests that it is inherited from the parent class **MonoBehavior**. Start() and Update() functions are the methods declared in **Monobehavior**'s parent class **Behaviour** class. 
 
-Start() function is called once in the lifetime of the script. We can use it to initialize certain elements at the initialization stage. Update() function is called once per frame. The detailed information for `Monobehaviour` class and its methods can be found in [Unity's official Manual](https://docs.unity3d.com/Manual/class-MonoBehaviour.html). We need to override these functions, so the game object can work the way we want.
+Start() function is called once in the lifetime of the script. We can use it to initialize certain elements at the initialization stage. Update() function is called once per frame. The detailed information for **Monobehaviour** class and its methods can be found in [Unity's official Manual](https://docs.unity3d.com/Manual/class-MonoBehaviour.html). We need to override these functions, so the game object can work the way we want.
 
 ### **Transform<a name="Transform"></a>**
 
