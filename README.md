@@ -94,11 +94,15 @@ We intentionally define the method run() in all three classes. The reason is tha
 
 ### **Encapsulation<a name="Encapsulation"></a>**
 Objects provide an interface to other code that wants to use them but maintain their internal state. The object's internal state is kept private, meaning it can only be accessed by its own methods, not from other objects. Keeping an object's internal state private and generally making a clear division between its public interface and its private internal state is called `encapsulation`.
+<figure>
+<img src="img/EncapsulationDiagram.png" 
+     width="450" 
+     height="320" />
+<figcaption>Encapsulation Diagram for Striker Class</figcaption>
+</figure>
 
 This is a useful feature because it enables the programmer to change the internal implementation of an object without having to find and update all the code that uses it: it creates a kind of firewall between this object and the rest of the system.
 
 In many OOP languages, we can prevent other code from accessing an object's internal state by marking some properties as `private`. It will generate an error if code outside the object tries to access them.
-
-<img src="img/EncapsulationDiagram.png" width="450" height="320" />
 
 ## **Unity and ML-Agents<a name="OOP"></a>**
