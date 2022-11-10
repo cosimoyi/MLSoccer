@@ -99,6 +99,6 @@ This is a useful feature because it enables the programmer to change the interna
 
 In many OOP languages, we can prevent other code from accessing an object's internal state by marking some properties as `private`. It will generate an error if code outside the object tries to access them.
 
-<img src="img/EncapsulationDiagram.png" width="350" height="250" />
+<img src="img/EncapsulationDiagram.png" width="450" height="320" />
 
 ## **Unity and ML-Agents<a name="OOP"></a>**
