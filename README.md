@@ -7,6 +7,11 @@
     2. [Inheritance and Polymorphism](#InheritanceAndPolymorphism)
     3. [Encapuslation](#Encapsulation)
 3. [Unity and ML-Agent](#UnityAndMLAgents)
+    1. [Scripts](#Scripts)
+    2. [Rigidbody](#Rigidbody)
+    3. [Collider](#Collider)
+    4. [Agent](#Agent)
+    5. [Policy](#Policy)
 4. [Create a Deep Reinforcement Learning Environment in Unity](#CreateEnv)
     1. [Environment Setup](#Setup)
     2. 
@@ -49,7 +54,7 @@ class Player
 		shoot()
 ```
 
-The class is just a blueprint and doesn’t do anything independently. We can create objects using the blueprint provided by the class. These objects we make can interact with each other in the game environment. Programming languages often use the keyword `new` to singal that an object is being initialized. We can then use `.` operator to call the methods of that object. 
+The class is just a blueprint and doesn’t do anything independently, but we can create objects using the blueprint provided by the class. These objects we make can interact with each other in the game environment. Programming languages often use the keyword `new` to singal that an object is being initialized. We can then use `.` operator to call the methods of that object. 
 
 ```C#
 playerA = new Player(“playerA”, 185, 85, “right”);
@@ -107,6 +112,9 @@ This is a useful feature because it enables the programmer to change the interna
 In many OOP languages, we can prevent other code from accessing an object's internal state by marking some properties as `private`. It will generate an error if code outside the object tries to access them.
 
 ## **Unity and ML-Agents<a name="UnityAndMLAgents"></a>**
+There are a lot of online [tutorials](https://learn.unity.com/project/getting-started?uv=2020.3&courseId=5cf96c41edbc2a2ca6e8810f) and [documentations](https://docs.unity3d.com/Manual/index.html) that would help familiarize yourself with Unity. In this section, I only focus on the concepts related to this specific repository. 
+
+### **Scripts<a name="Scripts"></a>**
 
 
 ## **Create a Deep Reinforcement Learning Environment in Unity<a name="CreateEnv"></a>**
