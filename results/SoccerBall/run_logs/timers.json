@@ -1,0 +1,47 @@
+{
+    "name": "root",
+    "metadata": {
+        "timer_format_version": "0.1.0",
+        "start_time_seconds": "1668038769",
+        "python_version": "3.7.13 (default, Oct 18 2022, 13:40:53) \n[Clang 12.0.0 ]",
+        "command_line_arguments": "/Users/yili/opt/anaconda3/envs/unityML/bin/mlagents-learn config/SoccerBall.yaml --run-id=SoccerBall --force",
+        "mlagents_version": "0.29.0.dev0",
+        "mlagents_envs_version": "0.29.0.dev0",
+        "communication_protocol_version": "1.5.0",
+        "pytorch_version": "1.8.1",
+        "numpy_version": "1.21.5",
+        "end_time_seconds": "1668038783"
+    },
+    "total": 13.296463792,
+    "count": 1,
+    "self": 0.02035258300000109,
+    "children": {
+        "run_training.setup": {
+            "total": 0.0203389169999999,
+            "count": 1,
+            "self": 0.0203389169999999
+        },
+        "TrainerController.start_learning": {
+            "total": 13.255772292,
+            "count": 1,
+            "self": 0.0012833340000000248,
+            "children": {
+                "TrainerController._reset_env": {
+                    "total": 13.254396708,
+                    "count": 1,
+                    "self": 13.254396708
+                },
+                "trainer_threads": {
+                    "total": 4.166000000083159e-06,
+                    "count": 1,
+                    "self": 4.166000000083159e-06
+                },
+                "TrainerController._save_models": {
+                    "total": 8.808399999971073e-05,
+                    "count": 1,
+                    "self": 8.808399999971073e-05
+                }
+            }
+        }
+    }
+}
