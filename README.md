@@ -13,8 +13,16 @@
     4. [Agent](#Agent)
     5. [Policy](#Policy)
 4. [Create a Deep Reinforcement Learning Environment in Unity](#CreateEnv)
-    1. [Environment Setup](#Setup)
-    2. 
+    1. [Environment Setup](#EnvSetup)
+    2. [Project Structure](#Structure)
+    3. [Create GameObjects](#CreateGameObjects)
+    4. [Initializing the Environment](#Initialization)
+    5. [Observing the Environment](Observation)
+    6. [Taking Actions](#Actions)
+    7. [Assigning Reward](#Reward)
+    8. [Agent Setup](#AgentSetup)
+    9. [Testing](#Test)
+    10. [Training](#Train)
 5. [What's Next](#WhatsNext)
 6. [Reference](#Reference)
 
@@ -103,7 +111,7 @@ Objects provide an interface to other code that wants to use them but maintain t
 <img src="img/EncapsulationDiagram.png" 
      width="450" 
      height="320" />
-<figcaption>Encapsulation Diagram for Striker Class</figcaption>
+<figcaption>Encapsulation Diagram for Striker class</figcaption>
 
 $~$
 
@@ -115,6 +123,6 @@ In many OOP languages, we can prevent other code from accessing an object's inte
 There are a lot of online [tutorials](https://learn.unity.com/project/getting-started?uv=2020.3&courseId=5cf96c41edbc2a2ca6e8810f) and [documentations](https://docs.unity3d.com/Manual/index.html) that would help familiarize yourself with Unity. In this section, I only focus on the concepts related to this specific repository. 
 
 ### **Scripts<a name="Scripts"></a>**
-
+When we create a C# script
 
 ## **Create a Deep Reinforcement Learning Environment in Unity<a name="CreateEnv"></a>**
