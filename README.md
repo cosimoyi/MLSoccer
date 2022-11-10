@@ -20,13 +20,13 @@ As a soccer enthusiast, I am constantly astonished by the imaginative attacks an
 
 In the past few years, breakthroughs flourished in reinforcement learning. We have witnessed the success of Reinforcement-Learning-based computer programs, such as [AlphaGo](https://www.deepmind.com/research/highlighted-research/alphago) and [OpenAI Five](https://openai.com/five/). By playing against different versions of themselves repeatedly, each time learning from their mistakes, they have become increasingly more robust and better at learning and decision-making, and therefore, being able to defeat professional human players. Naturally, an idea came to my mind: can we apply deep reinforcement learning to the computer-controlled players in soccer games so that they can behave in a less mechanized but more human-like way?
 
-I believe the answer is yes. Reinforcement learning works best for scenarios where it is easy to define success but hard to find how to get there. In a soccer game, we can easily determine success or not by looking at the scoreboard. And it is undoubtedly hard to find a way to score a goal. Unlike conventional soccer games, in which programmers define specific preset strategies for the computer-controlled players to play the game, reinforcement learning provides a soccer environment. It lets them learn the patterns by exploring the environment. 
+The answer is yes. The Google Brain team has already developed an open-source reinforcement learning environment [Google Research Football](https://github.com/google-research/football). Reinforcement learning works best for scenarios where it is easy to define success but hard to find how to get there. In a soccer game, we can quickly determine success or not by looking at the scoreboard. And it is undoubtedly hard to find a way to score a goal. Unlike conventional soccer games, in which programmers define specific preset strategies for the computer-controlled players to play the game, reinforcement learning provides a soccer environment. It lets them learn the patterns by exploring the environment. 
 
 The idea above sounds simple, but how to implement it is going to be challenging. Consequently, it is wise to break the seemingly impossible mission down into some more achievable smaller steps. Meanwhile, the Feynman Technique of learning suggests that when we want to develop a deep understanding of a topic, we can try to explain it in a straightforward, simple way to others. Therefore, creating this repository allows me to deepen my understanding of relative knowledge in Game Development (Unity) and Machine Learning (Deep Reinforcement Learning). I would also be glad if this repository helps others interested in both areas but struggled at these beginning steps.  
 
 ## **Object Oriented Programming<a name="OOP"></a>**
 ### **Class and Object<a name="ClassAndObject"></a>**
-Before diving in, it is essential to highlight the basic concepts of Object Oriented Programming. It is a fundamental and indispensable programming paradigm for game designs using Unity and ML-Agent toolkits. 
+Before diving in, it is essential to highlight some basic concepts of Object Oriented Programming. It is a fundamental and indispensable programming paradigm for game designs using Unity and ML-Agent toolkits. 
 
 When we think about creating a game from scratch, we might wonder about the program’s overall structure. If we define all the variables and functions line by line, we will get lost as the size of the program increases. Instinctively, the idea of `Object` and `Class` comes to mind: we can create classes with abstract definitions representing the types of objects we want to have in our game. 
 
@@ -106,4 +106,7 @@ This is a useful feature because it enables the programmer to change the interna
 
 In many OOP languages, we can prevent other code from accessing an object's internal state by marking some properties as `private`. It will generate an error if code outside the object tries to access them.
 
-## **Unity and ML-Agents<a name="OOP"></a>**
+## **Unity and ML-Agents<a name="UnityAndMLAgents"></a>**
+
+
+## **Create a Deep Reinforcement Learning Environment in Unity<a name="CreateEnv"></a>**
