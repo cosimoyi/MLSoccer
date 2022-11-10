@@ -4,7 +4,8 @@
 1. [Preface](#Preface)
 2. [Basics of Object Oriented Programming](#OOP)
     1. [Class and Object](#ClassAndObject)
-    2. [Inheritance](#Inheritance)
+    2. [Inheritance and Polymorphism](#InheritanceAndPolymorphism)
+    3. [Encapuslation](#Encapsulation)
 3. [Unity and ML-Agent](#UnityAndMLAgents)
 4. [Create a Deep Reinforcement Learning Environment in Unity](#CreateEnv)
     1. [Environment Setup](#Setup)
@@ -32,6 +33,7 @@ When we think about creating a game from scratch, we might wonder about the prog
 For example, if we were modeling a soccer game, we could use objects representing players. Every player shares some properties in common: they all have a name, height, weight, and dominant foot. Additionally, every player can perform certain things: run, dribble, tackle, pass, and shoot the ball. So, Player could be a class in our game system. The definition of the class lists the `Attributes` and `Methods` that every player has.
 
 In pseudocode, a Player class could be written like this:
+
 ```
 class Player
 	attributes
@@ -46,6 +48,7 @@ class Player
 		pass()
 		shoot()
 ```
+
 The class is just a blueprint and doesn’t do anything independently. We can create objects using the blueprint provided by the class. These objects we make can interact with each other in the game environment. Programming languages often use the keyword `new` to singal that an object is being initialized. We can then use `.` operator to call the methods of that object. 
 
 ```C#
@@ -55,5 +58,47 @@ playerA.run();
 playerA.pass();
 ```
 
-### **Inheritance<a name="Inheritance"></a>**
+### **Inheritance and Polymorphism<a name="InheritanceAndPolymorphism"></a>**
 
+Different players play different roles during a soccer match. A goalie primarily makes saves, while a striker primarily focuses on finishing. It would be helpful if we could represent that goalies and strikers share some properties. Inheritance lets us do this. 
+
+We start by observing that goalies and strikers are both players. They both have names, heights, weights, and dominant feet; they must be able to perform runs and passes. Then, Striker class and Goalie class can both be derived from Player class. We can achieve that by modifying the original Player class and adding some additional properties to the inherited classes:
+
+```
+class Player
+	attributes
+		name
+		height
+		weight
+		dominant_foot
+	methods
+		run()
+        pass()
+
+class Striker : extends Player
+    attributes
+    methods
+        run()
+		shoot()
+
+class Goalie : extends Player
+    attributes
+    methods
+        run()
+        save()
+```
+
+In this case, Player class is the `parent` class of both Goalie and Striker classes. Conversely, Goalie and Striker classes are `child` classes of  Player class. 
+
+We intentionally define the method run() in all three classes. The reason is that we want to have different running styles for the goalie and striker. And there is a default running style for general players. This feature - when a method has the same name but a different implementation in different classes - is called `polymorphism`. When a method in a child class replaces the parent class’s implementation, we say that the child class `overrides` the version in the parent class. 
+
+### **Encapsulation<a name="Encapsulation"></a>**
+Objects provide an interface to other code that wants to use them but maintain their internal state. The object's internal state is kept private, meaning it can only be accessed by its own methods, not from other objects. Keeping an object's internal state private and generally making a clear division between its public interface and its private internal state is called `encapsulation`.
+
+This is a useful feature because it enables the programmer to change the internal implementation of an object without having to find and update all the code that uses it: it creates a kind of firewall between this object and the rest of the system.
+
+In many OOP languages, we can prevent other code from accessing an object's internal state by marking some properties as `private`. It will generate an error if code outside the object tries to access them.
+
+![alt text](https://github.com/cosimoyi/MLSoccer/blob/main/img/EncapsulationDiagram.jpg?raw=true)
+
+## **Unity and ML-Agents<a name="OOP"></a>**
