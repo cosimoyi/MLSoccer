@@ -8,10 +8,11 @@
     3. [Encapuslation](#Encapsulation)
 3. [Unity and ML-Agent](#UnityAndMLAgents)
     1. [Scripts](#Scripts)
-    2. [Rigidbody](#Rigidbody)
+    2. [Transform](#Transform)
     3. [Collider](#Collider)
-    4. [Agent](#Agent)
-    5. [Policy](#Policy)
+    4. [Rigidbody](#Rigidbody)
+    5. [Agent](#Agent)
+    6. [Policy](#Policy)
 4. [Create a Deep Reinforcement Learning Environment in Unity](#CreateEnv)
     1. [Environment Setup](#EnvSetup)
     2. [Project Structure](#Structure)
@@ -123,6 +124,29 @@ In many OOP languages, we can prevent other code from accessing an object's inte
 There are a lot of online [tutorials](https://learn.unity.com/project/getting-started?uv=2020.3&courseId=5cf96c41edbc2a2ca6e8810f) and [documentations](https://docs.unity3d.com/Manual/index.html) that would help familiarize yourself with Unity. In this section, I only focus on the concepts related to this specific repository. 
 
 ### **Scripts<a name="Scripts"></a>**
-When we create a C# script
+In Unity, scripts can be used to control the physical behaviour of objects. When we open a newly created C# script in Unity, we will see the following code:
+
+```C#
+...
+
+public class NewBehaviourScript : MonoBehaviour
+{
+    void Start() { }
+    void Update() { }
+}
+```
+Now, we have a behaviour script for the game object it will be placed on. This script contains a class `MyBehaviourScript,` which is inherited from its parent class `MonoBehavior`. Start() and Update() functions are the methods of `Monobehavior`'s parent class `Behaviour` class. 
+
+Start() function is called once in the lifetime of the script. We can use it to initialize certain elements at the initialization stage. Update() function is called once per frame. The detailed information for `Monobehaviour` class and its methods can be found in [Unity's official Manual](https://docs.unity3d.com/Manual/class-MonoBehaviour.html). We need to override these functions, so the game object can work the way we want.
+
+### **Transform<a name="Transform"></a>**
+
+### **Collider<a name="Collider"></a>**
+
+### **Rigidbody<a name="Rigidbody"></a>**
+
+### **Agent<a name="Agent"></a>**
+
+### **Policy<a name="Policy"></a>**
 
 ## **Create a Deep Reinforcement Learning Environment in Unity<a name="CreateEnv"></a>**
