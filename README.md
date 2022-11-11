@@ -8,7 +8,7 @@
     3. [Encapuslation](#Encapsulation)
 3. [Unity and ML-Agent](#UnityAndMLAgents)
 4. [Create a Deep Reinforcement Learning Environment in Unity](#CreateEnv)
-    1. [Environment Setup](#EnvSetup)
+    1. [Environment Setup (For MacOS with M1 chip)](#EnvSetup)
     2. [Project Structure](#Structure)
     3. [Create GameObjects](#CreateGameObjects)
     4. [Initializing the Environment](#Initialization)
@@ -157,3 +157,4 @@ pip install -e ./ml-agents
 pip install importlib-metadata==4.4
 ```
 
+### **Project Structure<a name="Structure"></a>**
