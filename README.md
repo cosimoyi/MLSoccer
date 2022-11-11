@@ -125,9 +125,9 @@ More information will be updated in the future.
 
 If you decide to set up the ML-Agents environment in a Windows device or a macOS device that’s not running on the M1 chip, then I believe the [official tutorial](https://github.com/Unity-Technologies/ml-agents/blob/main/docs/Installation.md) would be sufficient for the setup. 
 
-However, we need to do something slightly different for a macOS device with an M1 chip to ensure everything works fine without compatibility issues. 
+However, we need to do something slightly different for a macOS device with an M1 chip to ensure everything works fine without compatibility issues. After **creating the project**, **downloading the ML=Agents package** in Unity Editor, and **having miniconda or anaconda installed** in our computer, we can set up the python virtual environment in the following way:
 
-1. Create an empty virtual environment
+1. Open a terminal and areate an empty virtual environment
 ```
 conda create -n mlenv
 ```
@@ -156,3 +156,4 @@ pip install -e ./ml-agents
 ```
 pip install importlib-metadata==4.4
 ```
+
