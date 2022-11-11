@@ -25,9 +25,6 @@
 5. [What's Next](#WhatsNext)
 6. [Reference](#Reference)
 
-
-$-$
-
 ## **Preface**
 
 As a soccer enthusiast, I am constantly astonished by the imaginative attacks and dedicated defenses during a high-level match. I wish to replicate such plays in the games; controlling a team and letting it achieve your tactical intentions is tempting. However, due to the physical constrain, we can only handle one player at a time; the off-ball players’ behaviors in the game then become quintessential: the immersive gaming experience vanishes quickly when we notice all kinds of ridiculous, erratic movements and decisions made by the computer-controlled players in the nowadays mainstream soccer games. 
@@ -41,6 +38,8 @@ The idea above sounds simple, but how to implement it is going to be challenging
 ## **Component Oriented Programming in Unity<a name="OP"></a>**
 
 Before diving in, it is essential to highlight some basic concepts of Component Oriented Programming. It is a fundamental and indispensable programming paradigm for game designs using Unity and ML-Agent toolkits. 
+
+$-$
 
 ### **Object Oriented Programming<a name="OOP"></a>**
 
