@@ -6,7 +6,7 @@
     1. [Object Oriented Programming](#OOP)
     2. [Component Oriented Programming](#COP)
     3. [Data Orietned Programming](#DOP)
-3. [Deep Reinforcement Learning using ML-Agent](#UnityAndMLAgents)
+3. [Deep Reinforcement Learning using ML-Agent](#DRLMLAgents)
     1. 
     2. 
     3. 
@@ -54,7 +54,7 @@ $-$
 
 $-$
 
-## **Deep Reinforcement Learning using ML-Agents<a name="UnityAndMLAgents"></a>**
+## **Deep Reinforcement Learning using ML-Agents<a name="DRLMLAgents"></a>**
 There are a lot of online [tutorials](https://learn.unity.com/project/getting-started?uv=2020.3&courseId=5cf96c41edbc2a2ca6e8810f) and [documentations](https://docs.unity3d.com/Manual/index.html) that would help familiarize yourself with Unity. In this section, I only focus on the concepts related to this specific repository. 
 
 More information will be updated in the future. 
