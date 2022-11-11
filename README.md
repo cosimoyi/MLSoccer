@@ -2,8 +2,15 @@
 
 ## **Table of Contents**
 1. [Preface](#Preface)
-2. [Object Oriented Programming and Component Oriented Programming](#OOP)
-3. [Unity and ML-Agent](#UnityAndMLAgents)
+2. [Component Oriented Programming in Unity](#OP)
+    1. [Object Oriented Programming](#OOP)
+    2. [Component Oriented Programming](#COP)
+    3. [Data Orietned Programming](#DOP)
+3. [Deep Reinforcement Learning using ML-Agent](#UnityAndMLAgents)
+    1. 
+    2. 
+    3. 
+    4. 
 4. [Create a Deep Reinforcement Learning Environment in Unity](#CreateEnv)
     1. [Environment Setup (For MacOS with M1 chip)](#EnvSetup)
     2. [Project Structure](#Structure)
@@ -29,9 +36,25 @@ The answer is yes. The Google Brain team has already developed an open-source re
 
 The idea above sounds simple, but how to implement it is going to be challenging. Consequently, it is wise to break the seemingly impossible mission down into some more achievable smaller steps. Meanwhile, the *Feynman Technique of Learning* suggests that when we want to develop a deep understanding of a topic, we can try to explain it in a straightforward, simple way to others. Therefore, creating this repository allows me to deepen my understanding of relative knowledge in Game Development (Unity) and Machine Learning (Deep Reinforcement Learning). I would also be glad if this repository helps others interested in both areas but struggled at these beginning steps.  
 
-## **Object Oriented Programming and Component Oriented Programming<a name="OOPAndCOP"></a>**
+## **Component Oriented Programming in Unity<a name="OP"></a>**
 
-## **Unity and ML-Agents<a name="UnityAndMLAgents"></a>**
+Before diving in, it is essential to highlight some basic concepts of Component Oriented Programming. It is a fundamental and indispensable programming paradigm for game designs using Unity and ML-Agent toolkits. 
+
+$-$
+
+### **Object Oriented Programming<a name="OOP"></a>**
+
+$-$
+
+### **Component Oriented Programming<a name="COP"></a>**
+
+$-$
+
+### **Data Oriented Programming<a name="DOP"></a>**
+
+$-$
+
+## **Deep Reinforcement Learning using ML-Agents<a name="UnityAndMLAgents"></a>**
 There are a lot of online [tutorials](https://learn.unity.com/project/getting-started?uv=2020.3&courseId=5cf96c41edbc2a2ca6e8810f) and [documentations](https://docs.unity3d.com/Manual/index.html) that would help familiarize yourself with Unity. In this section, I only focus on the concepts related to this specific repository. 
 
 More information will be updated in the future. 
