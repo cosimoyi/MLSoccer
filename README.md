@@ -7,10 +7,10 @@
     2. [Component Oriented Programming](#COP)
     3. [Data Orietned Programming](#DOP)
 3. [Deep Reinforcement Learning using ML-Agent](#DRLMLAgents)
-    1. 
-    2. 
-    3. 
-    4. 
+    1. [Reinforcement Learning]()
+    2. [Deep Learning]()
+    3. [Deep Reinfocement Learning]()
+    4. [ML-Agents Basics]()
 4. [Create a Deep Reinforcement Learning Environment in Unity](#CreateEnv)
     1. [Environment Setup (For MacOS with M1 chip)](#EnvSetup)
     2. [Project Structure](#Structure)
