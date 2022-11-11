@@ -42,8 +42,6 @@ The idea above sounds simple, but how to implement it is going to be challenging
 
 Before diving in, it is essential to highlight some basic concepts of Component Oriented Programming. It is a fundamental and indispensable programming paradigm for game designs using Unity and ML-Agent toolkits. 
 
-$-$
-
 ### **Object Oriented Programming<a name="OOP"></a>**
 
 $-$
