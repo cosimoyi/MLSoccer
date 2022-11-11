@@ -3,28 +3,30 @@
 ## **Table of Contents**
 1. [Preface](#Preface)
 2. [Component Oriented Programming in Unity](#OP)
-    1. [Object Oriented Programming](#OOP)
-    2. [Component Oriented Programming](#COP)
-    3. [Data Orietned Programming](#DOP)
+    - [Object Oriented Programming](#OOP)
+    - [Component Oriented Programming](#COP)
+    - [Data Orietned Programming](#DOP)
 3. [Deep Reinforcement Learning using ML-Agent](#DRLMLAgents)
-    1. [Reinforcement Learning]()
-    2. [Deep Learning]()
-    3. [Deep Reinfocement Learning]()
-    4. [ML-Agents Basics]()
+    - [Deep Learning](#DL)
+    - [Reinforcement Learning](#RL)
+    - [Deep Reinfocement Learning](#DRL)
+    - [ML-Agents Basics](#MLAgents)
 4. [Create a Deep Reinforcement Learning Environment in Unity](#CreateEnv)
-    1. [Environment Setup (For MacOS with M1 chip)](#EnvSetup)
-    2. [Project Structure](#Structure)
-    3. [Create GameObjects](#CreateGameObjects)
-    4. [Initializing the Environment](#Initialization)
-    5. [Observing the Environment](Observation)
-    6. [Taking Actions](#Actions)
-    7. [Assigning Reward](#Reward)
-    8. [Agent Setup](#AgentSetup)
-    9. [Testing](#Test)
-    10. [Training](#Train)
+    - [Environment Setup (For MacOS with M1 chip)](#EnvSetup)
+    - [Project Structure](#Structure)
+    - [Create GameObjects](#CreateGameObjects)
+    - [Initializing the Environment](#Initialization)
+    - [Observing the Environment](Observation)
+    - [Taking Actions](#Actions)
+    - [Assigning Reward](#Reward)
+    - [Agent Setup](#AgentSetup)
+    - [Testing](#Test)
+    - [Training](#Train)
 5. [What's Next](#WhatsNext)
 6. [Reference](#Reference)
 
+
+$-$
 
 ## **Preface**
 
@@ -58,6 +60,22 @@ $-$
 There are a lot of online [tutorials](https://learn.unity.com/project/getting-started?uv=2020.3&courseId=5cf96c41edbc2a2ca6e8810f) and [documentations](https://docs.unity3d.com/Manual/index.html) that would help familiarize yourself with Unity. In this section, I only focus on the concepts related to this specific repository. 
 
 More information will be updated in the future. 
+
+### **Deep Learning<a name="DL"></a>**
+
+$-$
+
+### **Reinforcement Learning<a name="RL"></a>**
+
+$-$
+
+### **Deep Reinforcement Learning<a name="DRL"></a>**
+
+$-$
+
+### **ML-Agents Basics<a name="MLAgents"></a>**
+
+$-$
 
 ## **Create a Deep Reinforcement Learning Environment in Unity<a name="CreateEnv"></a>**
 

@@ -9,15 +9,24 @@
                 "auxillary_file_paths": [
                     "results/SoccerBall/SoccerBall/SoccerBall-323473.pt"
                 ]
+            },
+            {
+                "steps": 324358,
+                "file_path": "results/SoccerBall/SoccerBall/SoccerBall-324358.onnx",
+                "reward": 0.3000000051476739,
+                "creation_time": 1668198677.6631749,
+                "auxillary_file_paths": [
+                    "results/SoccerBall/SoccerBall/SoccerBall-324358.pt"
+                ]
             }
         ],
         "final_checkpoint": {
-            "steps": 323473,
+            "steps": 324358,
             "file_path": "results/SoccerBall/SoccerBall.onnx",
-            "reward": 0.07484662740782726,
-            "creation_time": 1668040898.0111208,
+            "reward": 0.3000000051476739,
+            "creation_time": 1668198677.6631749,
             "auxillary_file_paths": [
-                "results/SoccerBall/SoccerBall/SoccerBall-323473.pt"
+                "results/SoccerBall/SoccerBall/SoccerBall-324358.pt"
             ]
         }
     },
