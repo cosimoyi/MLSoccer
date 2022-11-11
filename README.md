@@ -59,6 +59,9 @@ There are a lot of online [tutorials](https://learn.unity.com/project/getting-st
 More information will be updated in the future. 
 
 ### **Deep Learning<a name="DL"></a>**
+Deep Learning algorithms are based on artificial neural networks, whose algorithmic structures allow models composed of multiple processing layers to learn data representations with various abstraction levels. A typical neural network structure looks like this:
+
+![alt text](https://1.cms.s81c.com/sites/default/files/2021-01-06/ICLH_Diagram_Batch_01_03-DeepNeuralNetwork-WHITEBG.png)
 
 $-$
 
