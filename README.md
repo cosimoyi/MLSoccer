@@ -36,7 +36,7 @@ In the past few years, breakthroughs flourished in reinforcement learning. We ha
 
 The answer is yes. The Google Brain team has already developed an open-source reinforcement learning environment [Google Research Football](https://github.com/google-research/football). Reinforcement learning works best for scenarios where it is easy to define success but hard to find how to get there. In a soccer game, we can quickly determine success or not by looking at the scoreboard. And it is undoubtedly hard to find a way to score a goal. Unlike conventional soccer games, in which programmers define specific preset strategies for the computer-controlled players to play the game, reinforcement learning provides a soccer environment. It lets them learn the patterns by exploring the environment. 
 
-The idea above sounds simple, but how to implement it is going to be challenging. Consequently, it is wise to break the seemingly impossible mission down into some more achievable smaller steps. Meanwhile, the Feynman Technique of learning suggests that when we want to develop a deep understanding of a topic, we can try to explain it in a straightforward, simple way to others. Therefore, creating this repository allows me to deepen my understanding of relative knowledge in Game Development (Unity) and Machine Learning (Deep Reinforcement Learning). I would also be glad if this repository helps others interested in both areas but struggled at these beginning steps.  
+The idea above sounds simple, but how to implement it is going to be challenging. Consequently, it is wise to break the seemingly impossible mission down into some more achievable smaller steps. Meanwhile, the *Feynman Technique of Learning* suggests that when we want to develop a deep understanding of a topic, we can try to explain it in a straightforward, simple way to others. Therefore, creating this repository allows me to deepen my understanding of relative knowledge in Game Development (Unity) and Machine Learning (Deep Reinforcement Learning). I would also be glad if this repository helps others interested in both areas but struggled at these beginning steps.  
 
 ## **Object Oriented Programming<a name="OOP"></a>**
 ### **Class and Object<a name="ClassAndObject"></a>**
@@ -135,11 +135,12 @@ public class NewBehaviourScript : MonoBehaviour
     void Update() { }
 }
 ```
-Now, we have a behaviour script for the game object it will be placed on. This script contains a class **MyBehaviourScript**. The `:` suggests that it is inherited from the parent class **MonoBehavior**. Start() and Update() functions are the methods declared in **Monobehavior**'s parent class **Behaviour** class. 
+Now, we have a behaviour script for the game object it will be placed on. Every Unity script is a class. In this case, the class name for the script is called **MyBehaviourScript**. The `:` suggests that it is inherited from the parent class **MonoBehavior**. Start() and Update() functions are the methods declared in **Monobehavior**'s parent class **Behaviour** class. 
 
-Start() function is called once in the lifetime of the script. We can use it to initialize certain elements at the initialization stage. Update() function is called once per frame. The detailed information for **Monobehaviour** class and its methods can be found in [Unity's official Manual](https://docs.unity3d.com/Manual/class-MonoBehaviour.html). We need to override these functions, so the game object can work the way we want.
+Start() function is called once in the lifetime of the script. We can use it to initialize certain elements at the initialization stage. Update() function is called once per frame. The detailed information for **Monobehaviour** class and its methods can be found in [Unity's official Manual](https://docs.unity3d.com/Manual/class-MonoBehaviour.html). We need to override these functions and potentially add more customized functions, so the game object can work the way we desire.
 
 ### **Transform<a name="Transform"></a>**
+Every object in a scene has a Transform. It is used to store and manipulate the position, rotation, and scale of
 
 ### **Collider<a name="Collider"></a>**
 
