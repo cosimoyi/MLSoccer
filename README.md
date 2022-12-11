@@ -2,8 +2,8 @@
 
 ## **Table of Contents**
 1. [Preface](#Preface)
-2. [Component Oriented Programming in Unity](#OP)
-3. [Reinforcement Learning using ML-Agent](#DRLMLAgents)
+2. [Component Oriented Programming in Unity](#COP)
+3. [Reinforcement Learning using ML-Agent](#RLMLAgents)
 4. [Create a Deep Reinforcement Learning Environment in Unity](#CreateEnv)
     - [Environment Setup (For MacOS with M1 chip)](#EnvSetup)
     - [Create GameObjects](#CreateGameObjects)
@@ -27,7 +27,7 @@ The answer is yes. The Google Brain team has already developed an open-source re
 
 The idea above sounds simple, but how to implement it is going to be challenging. Consequently, it is wise to break the seemingly impossible mission down into some more achievable smaller steps. Meanwhile, the *Feynman Technique of Learning* suggests that when we want to develop a deep understanding of a topic, we can try to explain it in a straightforward, simple way to others. Therefore, creating this repository allows me to deepen my understanding of relative knowledge in Game Development (Unity) and Machine Learning (Deep Reinforcement Learning). I would also be glad if this repository helps others interested in both areas but struggled at these beginning steps.  
 
-## **Component Oriented Programming in Unity<a name="OP"></a>**
+## **Component Oriented Programming in Unity<a name="COP"></a>**
 
 Before diving in, it is essential to highlight some basic concepts of Component Oriented Programming. It is a fundamental and indispensable programming paradigm for game designs using Unity and ML-Agent toolkits. 
 
@@ -55,7 +55,7 @@ This is where components save the day! If we divide up the functionality of what
 
 Let’s say that any weapon will have a component for damage, range, and projectiles (optional). Using Unity’s UI, you could create a weapon by dragging these components onto any GameObject and customizing the values of each one. Then, if the way projectiles are handled changes further into development, all you need to do is change one script, and all your weapons’ functionalities will be updated instead of just those defined at one level of a tree.
 
-## **Deep Reinforcement Learning using ML-Agents<a name="DRLMLAgents"></a>**
+## **Deep Reinforcement Learning using ML-Agents<a name="RLMLAgents"></a>**
 There are a lot of online [tutorials](https://learn.unity.com/project/getting-started?uv=2020.3&courseId=5cf96c41edbc2a2ca6e8810f) and [documentations](https://docs.unity3d.com/Manual/index.html) that would help familiarize yourself with Unity. 
 
 Deep Learning algorithms are based on artificial neural networks, whose algorithmic structures allow models composed of multiple processing layers to learn data representations with various abstraction levels. A typical neural network structure looks like this:
@@ -173,19 +173,51 @@ Now the scene should look like the following:
 
 <img src="https://github.com/cosimoyi/MLSoccer/blob/main/img/Scene.png" width=80% height=80%/>
 
+And the Hierarchy would look like this:
+
+<img src="https://github.com/cosimoyi/MLSoccer/blob/main/img/Hierarchy.png" width=40% height=40%/>
+
 ### **Initializing the Environment<a name="Initialization"></a>**
+
+
+
+
 
 ### **Observing the Environment<a name="Observation"></a>**
 
+
+
+
+
 ### **Taking Actions<a name="Actions"></a>**
+
+
+
+
 
 ### **Assigning Reward<a name="Reward"></a>**
 
+
+
+
+
 ### **Agent Setup<a name="AgentSetup"></a>**
+
+
+
+
 
 ### **Testing<a name="Testing"></a>**
 
+
+
+
+
 ## **What's Next<a name="WhatsNext"></a>**
+
+
+
+
 
 ## **Reference<a name="Reference"></a>**
 
