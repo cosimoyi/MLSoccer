@@ -47,8 +47,6 @@ These factors enable component-oriented programming to reduce the cost of long-t
 
 In Unity, we commonly use the component-oriented programming design paradigm. At a high level, components in Unity are C# scripts that can be added onto the GameObject; they can be designed and implemented in many ways. As it has been explained earlier, building up game features using sub-components (rather than inheriting from an object) is usually more efficient and easier to maintain. 
 
-![alt text](https://www.researchgate.net/profile/Nailah-Al-Madi/publication/335744769/figure/fig2/AS:801925662515203@1568205385817/Unity-Game-Objects-components.png)
-
 It’s helpful to spend time designing the component architecture of your game because it can reduce overhead time in the long run. Let’s say we want to add a weapon system into a game for players/enemies; we want a sword, a crossbow, and a slingshot.
 
 Using inheritance, you could create a tree for both ranged and non-ranged weapons. You could say that the crossbow and slingshot inherit some of their functionality from the ranged branch since they fire projectiles. But do we really need trees here? You could say that a sword is a ranged weapon, too (with a very low range). In this example, I only have three weapons, but if there were many more, developers could potentially be stuck maintaining several branches of scripts (or a handful of very large ones) for common behavior used across the system.
