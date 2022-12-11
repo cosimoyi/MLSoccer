@@ -179,8 +179,85 @@ And the Hierarchy would look like this:
 
 ### **Initializing the Environment<a name="Initialization"></a>**
 
+After creating the GameObjects for this environment, we need to initialize the training environment. To achieve that, we can create a Script that attaches to the Agent of this environment:
+1. Select the Agent GameObject to view it in the Inspector window.
+2. Click Add Component.
+3. Click New Script in the list of components (at the bottom).
+4. Name the script "RollerAgent".
+5. Click Create and Add.
 
+Then, edit the `Agent` script:
+1. In the Unity Project window, double-click the Agent script to open it in your code editor.
+2. Import ML-Agent package by adding
+~~~c#
+using Unity.MLAgents;
+using Unity.MLAgents.Sensors;
+using Unity.MLAgents.Actuators;
+~~~
+3. Delete `Update()` function since we are not using it, but keep `Start()` function. `Start()` function is called on the frame when a script is enabled just before any of the Update methods are called the first time. 
 
+The process of training in the ML-Agents Toolkit involves running episodes where the Agent attempts to solve the task. In our case, we want the Agent push the Ball toward the Target. Each episode lasts until the Agents solves the task (the Ball reaches the Target), fails (rolls off the platform) or times out (takes too long to solve or fail at the task). 
+
+At the start of each episode, OnEpisodeBegin() is called to set-up the environment for a new episode. Typically the scene is initialized in a random manner to enable the agent to learn to solve the task under a variety of conditions. 
+
+In this example, each time the Agent "dribble" the Ball and let the Ball reaches the target, the episode ends and then both the Target and the Agent are moved to a new random location; and if the Ball or Agent fall off the Ground, they will be put back onto the floor. All the aforesaid functionalities are handled in OnEpisodeBegin().
+
+To interact with the Target, we need a reference to its Transform (which stores a GameObject's position, orientation and scale in the 3D world). To get this reference, add a public field of type Transform to the RollerAgent class. Public fields of a component in Unity get displayed in the Inspector window, allowing you to choose which GameObject to use as the target in the Unity Editor.
+
+To reset the Agent's velocity (and later to apply force to move the agent) we need a reference to the Rigidbody component. A Rigidbody is Unity's primary element for physics simulation. (See Physics for full documentation of Unity physics.) Since the Rigidbody component is on the same GameObject as our Agent script, the best way to get this reference is using GameObject.GetComponent<T>(), which we can call in our script's Start() method.
+
+So far, our RollerAgent script looks like:
+
+~~~c#
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using Unity.MLAgents;
+using Unity.MLAgents.Sensors;
+using Unity.MLAgents.Actuators;
+
+public class AgentController : Agent
+{
+    Rigidbody rBodyAgent;  
+    Rigidbody rBodyBall;
+
+    void Start()
+    {
+        rBodyAgent = GetComponent<Rigidbody>();
+        rBodyBall = Ball.GetComponent<Rigidbody>();
+    }
+
+    public Transform Target;  // the reference for Target
+    public Transform Ball;  // the reference for Ball
+
+    public override void OnEpisodeBegin()
+    {
+        // If either the agent or the ball fell, zero its momentum
+        if (this.transform.localPosition.y < 0 || Ball.localPosition.y < 0)
+        {
+            this.rBodyAgent.angularVelocity = Vector3.zero;
+            this.rBodyAgent.velocity = Vector3.zero;
+            this.transform.localPosition = new Vector3(Random.Range(3.0f, 13.0f),
+                                                       0.5f,
+                                                       Random.Range(-8.0f, 8.0f));
+
+            this.transform.LookAt(Ball);
+            rBodyBall.angularVelocity = Vector3.zero;
+            rBodyBall.velocity = Vector3.zero;
+        }
+
+        // Move  the target to a new spot, reset ball location to 0
+        this.transform.localPosition = new Vector3(Random.Range(3.0f, 13.0f),
+                                                   0.5f,
+                                                    Random.Range(-8.0f, 8.0f));
+        this.transform.LookAt(Ball);
+        Target.localPosition = new Vector3(Random.Range(-13.0f, -3.0f),
+                                           0.5f,
+                                           Random.Range(-8.0f, 8.0f));
+        Ball.transform.localPosition = new Vector3(0, 0.5f, 0);
+    }
+}
+~~~
 
 
 ### **Observing the Environment<a name="Observation"></a>**
@@ -220,6 +297,8 @@ And the Hierarchy would look like this:
 
 
 ## **Reference<a name="Reference"></a>**
+
+This page is adapted from [this](https://github.com/Unity-Technologies/ml-agents/blob/release_19_docs/docs/Learning-Environment-Create-New.md) official tutorial, other sources include:
 
 [Component-Oriented Versus Object-Oriented Programming](https://www.oreilly.com/library/view/programming-net-components/0596102070/ch01s02.html#:~:text=In%20a%20nutshell%2C%20object%2Doriented,inner%20workings%20to%20use%20them.)
 
