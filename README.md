@@ -125,17 +125,50 @@ GameObject is the base class for all entities in Unity Scenes. In our simplified
 1. Right click in Hierarchy window, select 3D Object > Plane.
 2. Name the GameObject "Ground".
 3. Select the Ground GameObject to view its properties in the Inspector window.
-4. Set Transform to Position = (0, 0, 0), Rotation = (0, 0, 0), Scale = (1, 1, 1).
+4. Set Transform to Position = `(0, 0, 0)`, Rotation = `(0, 0, 0)`, Scale = `(3, 1, 2)`. 
 
-<img src="https://github.com/cosimoyi/MLSoccer/blob/main/img/GroundGameObject.png" width=10% height=10%/>
+<img src="https://github.com/cosimoyi/MLSoccer/blob/main/img/GroundGameObject.png" width=40% height=40%/>
+
+Note: 
+- For now, we do not have to pay too much attention on [Mesh Filter](https://docs.unity3d.com/Manual/class-MeshFilter.html), [Mesh Renderer](https://docs.unity3d.com/560/Documentation/Manual/class-MeshRenderer.html), or [Meshe Collider](https://docs.unity3d.com/560/Documentation/Manual/class-MeshCollider.html). They are automatically generated when a GameObject is being created. 
+
+- We can [create and change the material](https://docs.unity3d.com/2019.3/Documentation/Manual/Materials.html) of the GameObjects, because the color code will make our environment more straightforward and visually appealing. 
 
 **Agent** (represents the soccer player)
-1. 
-2. 
-3. 
-4. 
+1. Right click in Hierarchy window, select 3D Object > Cube.
+2. Name the GameObject "Agent".
+3. Select the Agent Cube to view its properties in the Inspector window.
+4. Set Transform to Position = `(13, 0.5, 0)`, Rotation = `(0, 0, 0)`, Scale = `(1, 1, 1)`
+5. Add the `Rigidbody` component to the Sphere.
+
+<img src="https://github.com/cosimoyi/MLSoccer/blob/main/img/AgentGameObject.png" width=40% height=40%/>
+
+Note:
+- We set the y value to be 0.5 instead of 0. If we set y-axis to be 0, the Agent Cube would be imbedded in the ground. However, we want it to stand on the ground. Another way to set the Agent cute above the ground is to drag the Agent GameObject toward the ground GameObject while holding the shift key. Then, Unity will automatically place the cube on the ground.
+
+- Later we will write code to respawn the Agent and Target randomly after each training episode, so the x-axis and z-axis values are not that important as long as they are on the ground. 
+
+- `Rigidbody` component allows a GameObject to react to real-time physics. This includes reactions to forces and gravity, mass, drag and momentum. We want the Agent to interact with the Ball; therefore, we will add `Rigitbody` to both GameObjects. Notice that we didn't add `Rigidbody` component to the ground GameObject, and that is why when the game start, the ground won't start to fall due to the gravity.
+
 **Target** (represents the ball receiver)
+1. Right click in Hierarchy window, select 3D Object > Cube.
+2. Name the GameObject "Target".
+3. Select the Target Cube to view its properties in the Inspector window.
+4. Set Transform to Position = `(-13, 0.5, 0)`, Rotation = `(0, 0, 0)`, Scale = `(1, 1, 1)`
+
+<img src="https://github.com/cosimoyi/MLSoccer/blob/main/img/TargetGameObject.png" width=40% height=40%/>
+
 **Ball** (represents the soccer ball)
+1. Right click in Hierarchy window, select 3D Object > Sphere.
+2. Name the GameObject "Ball".
+3. Select the Ball sphere to view its properties in the Inspector window.
+4. Set Transform to Position = `(0, 0.5, 0)`, Rotation = `(0, 0, 0)`, Scale = `(1, 1, 1)`
+
+<img src="https://github.com/cosimoyi/MLSoccer/blob/main/img/BallGameObject.png" width=40% height=40%/>
+
+Now the scene should look like the following:
+
+<img src="https://github.com/cosimoyi/MLSoccer/blob/main/img/scene.png" width=40% height=40%/>
 
 ### **Initializing the Environment<a name="Initialization"></a>**
 
