@@ -144,8 +144,6 @@ Note:
 Note:
 - We set the y value to be 0.5 instead of 0. If we set y-axis to be 0, the Agent Cube would be imbedded in the ground. However, we want it to stand on the ground. Another way to set the Agent cute above the ground is to drag the Agent GameObject toward the ground GameObject while holding the shift key. Then, Unity will automatically place the cube on the ground.
 
-- Later we will write code to respawn the Agent and Target randomly after each training episode, so the x-axis and z-axis values are not that important as long as they are on the ground. 
-
 - `Rigidbody` component allows a GameObject to react to real-time physics. This includes reactions to forces and gravity, mass, drag and momentum. We want the Agent to interact with the Ball; therefore, we will add `Rigitbody` to both GameObjects. Notice that we didn't add `Rigidbody` component to the ground GameObject, and that is why when the game start, the ground won't start to fall due to the gravity.
 
 **Target** (represents the ball receiver)
@@ -166,7 +164,7 @@ Note:
 
 Now the scene should look like the following:
 
-<img src="https://github.com/cosimoyi/MLSoccer/blob/main/img/scene.png" width=40% height=40%/>
+<img src="https://github.com/cosimoyi/MLSoccer/blob/main/img/Scene.png" width=40% height=40%/>
 
 ### **Initializing the Environment<a name="Initialization"></a>**
 
