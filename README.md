@@ -127,7 +127,7 @@ GameObject is the base class for all entities in Unity Scenes. In our simplified
 3. Select the Ground GameObject to view its properties in the Inspector window.
 4. Set Transform to Position = (0, 0, 0), Rotation = (0, 0, 0), Scale = (1, 1, 1).
 
-![alt text](https://github.com/cosimoyi/MLSoccer/blob/main/img/GroundGameObject.png){ width=50% height=50%}
+<img src="https://github.com/cosimoyi/MLSoccer/blob/main/img/GroundGameObject.png" width=50% height=50%/>
 
 **Agent** (represents the soccer player)
 1. 
