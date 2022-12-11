@@ -162,9 +162,16 @@ Note:
 
 <img src="https://github.com/cosimoyi/MLSoccer/blob/main/img/BallGameObject.png" width=40% height=40%/>
 
+After creating the GameObjects for the environment, now we need to group them into a training field:
+1. Right-click on your Project Hierarchy and create a new empty GameObject. Name it TrainingField.
+2. Reset the TrainingArea’s Transform so that it is at `(0,0,0)` with Rotation `(0,0,0)` and Scale `(1,1,1)`.
+3. Drag the Ground, Target, Agent, and Ball GameObjects in the Hierarchy into the TrainingArea GameObject.
+
+Later, we can duplicate these traning fields to make them train simultaneously, so that the training process will become significantly faster comparing to only having one training field. 
+
 Now the scene should look like the following:
 
-<img src="https://github.com/cosimoyi/MLSoccer/blob/main/img/Scene.png" width=40% height=40%/>
+<img src="https://github.com/cosimoyi/MLSoccer/blob/main/img/Scene.png" width=80% height=80%/>
 
 ### **Initializing the Environment<a name="Initialization"></a>**
 
