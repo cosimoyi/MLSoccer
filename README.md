@@ -202,9 +202,9 @@ At the start of each episode, OnEpisodeBegin() is called to set-up the environme
 
 In this example, each time the Agent "dribble" the Ball and let the Ball reaches the target, the episode ends and then both the Target and the Agent are moved to a new random location; and if the Ball or Agent fall off the Ground, they will be put back onto the floor. All the aforesaid functionalities are handled in OnEpisodeBegin().
 
-To interact with the Target, we need a reference to its Transform (which stores a GameObject's position, orientation and scale in the 3D world). To get this reference, add a public field of type Transform to the RollerAgent class. Public fields of a component in Unity get displayed in the Inspector window, allowing you to choose which GameObject to use as the target in the Unity Editor.
+To interact with the Target and the Ball, we need two references to their Transform (which stores a GameObject's position, orientation and scale in the 3D world). To get this reference, add public field of type Transform to the Agent class and Ball class. Public fields of a component in Unity get displayed in the Inspector window, allowing you to choose which GameObject to use as the target in the Unity Editor.
 
-To reset the Agent's velocity (and later to apply force to move the agent) we need a reference to the Rigidbody component. A Rigidbody is Unity's primary element for physics simulation. (See Physics for full documentation of Unity physics.) Since the Rigidbody component is on the same GameObject as our Agent script, the best way to get this reference is using GameObject.GetComponent<T>(), which we can call in our script's Start() method.
+To reset the Agent and Ball's velocity (and later to apply force to move the agent) we need references to the Rigidbody component. A Rigidbody is Unity's primary element for physics simulation. Since the Rigidbody component is on the same GameObject as our Agent script, the best way to get this reference is using GameObject.GetComponent<T>(), which we can call in our script's Start() method. 
 
 So far, our RollerAgent script looks like:
 
@@ -218,10 +218,10 @@ using Unity.MLAgents.Actuators;
 
 public class AgentController : Agent
 {
-    Rigidbody rBodyAgent;  
+    Rigidbody rBodyAgent; 
     Rigidbody rBodyBall;
 
-    void Start()
+    void Start() 
     {
         rBodyAgent = GetComponent<Rigidbody>();
         rBodyBall = Ball.GetComponent<Rigidbody>();
@@ -233,24 +233,21 @@ public class AgentController : Agent
     public override void OnEpisodeBegin()
     {
         // If either the agent or the ball fell, zero its momentum
-        if (this.transform.localPosition.y < 0 || Ball.localPosition.y < 0)
+        if (this.transform.localPosition.y < 0 || Ball.localPosition.y < 0)  
         {
-            this.rBodyAgent.angularVelocity = Vector3.zero;
-            this.rBodyAgent.velocity = Vector3.zero;
-            this.transform.localPosition = new Vector3(Random.Range(3.0f, 13.0f),
-                                                       0.5f,
-                                                       Random.Range(-8.0f, 8.0f));
+            this.rBodyAgent.angularVelocity = Vector3.zero;  
+            this.rBodyAgent.velocity = Vector3.zero;  
 
-            this.transform.LookAt(Ball);
             rBodyBall.angularVelocity = Vector3.zero;
             rBodyBall.velocity = Vector3.zero;
         }
 
-        // Move  the target to a new spot, reset ball location to 0
+        // Move the Target and the Agent to a new spot, reset ball to the center point
         this.transform.localPosition = new Vector3(Random.Range(3.0f, 13.0f),
                                                    0.5f,
-                                                    Random.Range(-8.0f, 8.0f));
+                                                   Random.Range(-8.0f, 8.0f));
         this.transform.LookAt(Ball);
+
         Target.localPosition = new Vector3(Random.Range(-13.0f, -3.0f),
                                            0.5f,
                                            Random.Range(-8.0f, 8.0f));
@@ -259,42 +256,219 @@ public class AgentController : Agent
 }
 ~~~
 
-
 ### **Observing the Environment<a name="Observation"></a>**
 
+The Agent sends the information we collect to the Brain, which uses it to make a decision. When you train the Agent (or use a trained model), the data is fed into a neural network as a feature vector. For an Agent to successfully learn a task, we need to provide the correct information. A good rule of thumb for deciding what information to collect is to consider what you would need to calculate an analytical solution to the problem.
 
+In our case, the information our Agent collects includes the position of the Target and the Ball, the position of the Agent itself, and the velocity of the Agent and the Ball. This helps the Agent learn to control its speed so it doesn't overshoot the target and roll off the platform. In total, the agent observation contains 11 values as implemented below:
 
+~~~c#
+public override void CollectObservations(VectorSensor sensor)
+{
+    // Target, Ball, and Agent Positions
+    sensor.AddObservation(Target.localPosition);  // x, y, z
+    sensor.AddObservation(Ball.localPosition);  // x, y, z
+    sensor.AddObservation(this.transform.localPosition);  // x, y, z
 
+    // Agent Velocity
+    sensor.AddObservation(rBodyAgent.velocity.x);  
+    sensor.AddObservation(rBodyAgent.velocity.z);
+}
+~~~
 
 ### **Taking Actions<a name="Actions"></a>**
 
+The final part of the Agent code is the `Agent.OnActionReceived()` method, which receives actions and assigns the reward.
 
+To solve our task of letting the Agent push the Ball towards the Target, the Agent needs to be able to move in the x and z directions and rotate along the y axis. As such, the Agent needs 3 actions: the first determines the movement applied along the x-axis; the second determines the movement applied along the z-axis; and the third determins the rotation applied along the y-axis. (We can also approach the task by adding forces to the Agent).
 
+The Agent applies the values from the `action[]` array to its Rigidbody component `rBody`, using `Rigidbody.AddForce()`:
 
+~~~c#
+// Actions for moving and rotating
+public float speedMultiplier = 10f;
+Vector3 controlSignal = Vector3.zero;
+Vector3 rotateDir = Vector3.zero;
+
+controlSignal.x = actions.ContinuousActions[0];
+controlSignal.z = actions.ContinuousActions[1];
+rotateDir.y = actions.ContinuousActions[2];
+
+transform.Translate(controlSignal * Time.deltaTime * speedMultiplier);
+transform.Rotate(rotateDir, Time.deltaTime * 100f);
+~~~
 
 ### **Assigning Reward<a name="Reward"></a>**
 
+Reinforcement learning requires rewards to signal which decisions are good and which are bad. The learning algorithm uses the rewards to determine whether it is giving the Agent the optimal actions. You want to reward an Agent for completing the assigned task. In this case, the Agent is given a reward of 1.0 for reaching the Target cube.
 
+Rewards are assigned in `OnActionReceived()`. The Agent calculates the distance to detect when it reaches the target. When it does, the code calls `Agent.SetReward()` to assign a reward of 1.0 and marks the agent as finished by calling `EndEpisode()` on the Agent.
 
+~~~c#
+// Rewards
+float distanceToTarget = Vector3.Distance(Ball.localPosition, Target.localPosition);
+float distanceToBall = Vector3.Distance(Ball.localPosition, this.transform.localPosition);
 
+if (distanceToBall < 1.42f)  // When the distance between Ball and Agent is really close, assign a reward of 0.05 (So the Agent would prefer dribble than kicking the ball)
+{
+    SetReward(0.05f);
+}
+
+if (distanceToTarget < 1.42f)  // When the distance between Ball and Target is really close, assign a reward of 1.0
+{
+    SetReward(1.0f);
+    EndEpisode();
+}
+else if (this.transform.localPosition.y < 0)  // When the Agent falls, end episode
+{
+    EndEpisode();
+}
+else if (Ball.localPosition.y < 0)  // When the Ball falls, end episode
+{
+    EndEpisode();
+}
+~~~
+
+With the action and reward logic outlined above, the final version of   `OnActionReceived()` looks like:
+
+~~~c#
+public float speedMultiplier = 10;
+public override void OnActionReceived(ActionBuffers actions)
+{
+    // Actions for moving and rotating
+    Vector3 controlSignal = Vector3.zero;
+    Vector3 rotateDir = Vector3.zero;
+
+    controlSignal.x = actions.ContinuousActions[0];
+    controlSignal.z = actions.ContinuousActions[1];
+    rotateDir.y = actions.ContinuousActions[2];
+
+    transform.Translate(controlSignal * Time.deltaTime * speedMultiplier);
+    transform.Rotate(rotateDir, Time.deltaTime * 100f);
+
+    // Rewards
+    float distanceToTarget = Vector3.Distance(Ball.localPosition, Target.localPosition);
+    float distanceToBall = Vector3.Distance(Ball.localPosition, this.transform.localPosition);
+
+    if (distanceToBall < 1.42f)
+    {
+        SetReward(0.05f);
+    }
+
+    if (distanceToTarget < 1.42f)
+    {
+        SetReward(1.0f);
+        EndEpisode();
+    }
+    else if (this.transform.localPosition.y < 0)
+    {
+        EndEpisode();
+    }
+    else if (Ball.localPosition.y < 0)
+    {
+        EndEpisode();
+    }
+}
+~~~
 
 ### **Agent Setup<a name="AgentSetup"></a>**
 
+Now that all the GameObjects and ML-Agent components are in place, it is time to connect everything together in the Unity Editor. This involves adding and setting some of the Agent Component's properties so that they are compatible with our Agent script.
 
+1. Select the Agent GameObject to show its properties in the Inspector window.
+2. Drag the Target and Ball GameObject in the Hierarchy into the Target field and Ball field in Agent Script.
+3. Add a Decision Requester script with the Add Component button. Set the Decision Period to 10. For more information on decisions, see the Agent documentation
+4. Add a Behavior Parameters script with the Add Component button. Set the Behavior Parameters of the Agent to the following:
+    - Behavior Name: SoccerBall
+    - Vector Observation > Space Size = 11
+    - Actions > Continuous Actions = 3
 
+In the inspector, the Agent should look like this now:
 
+<img src="https://github.com/cosimoyi/MLSoccer/blob/main/img/AgentSetup.png" width=40% height=40%/>
 
-### **Testing<a name="Testing"></a>**
+### **Testing<a name="Test"></a>**
 
+It is always a good idea to first test your environment by controlling the Agent using the keyboard. To do so, you will need to extend the `Heuristic()` method in the `Agent` class. For our example, the heuristic will generate an action corresponding to the values of the "Horizontal" and "Vertical" input axis (which correspond to the keyboard arrow keys):
 
+~~~c#
+public override void Heuristic(in ActionBuffers actionsOut)
+{
+    var continuousActionsOut = actionsOut.ContinuousActions;
+    if (Input.GetKey(KeyCode.W))
+    {
+        continuousActionsOut[0] = -1;
+    }
+    if (Input.GetKey(KeyCode.S))
+    {
+        continuousActionsOut[0] = 1;
+    }
+    if (Input.GetKey(KeyCode.A))
+    {
+        continuousActionsOut[1] = -1;
+    }
+    if (Input.GetKey(KeyCode.D))
+    {
+        continuousActionsOut[1] = 1;
+    }
+    if (Input.GetKey(KeyCode.E))
+    {
+        continuousActionsOut[2] = 1;
+    }
+    if (Input.GetKey(KeyCode.Q))
+    {
+        continuousActionsOut[2] = -1;
+    }
+}
+~~~
 
+## **Training the Envornmnet<a name="Train"></a>**
 
+The hyperparameters for training are specified in a configuration file that you pass to the mlagents-learn program. Create a new `soccerball_config.yaml` file under `config/` and include the following hyperparameter values:
+
+~~~yaml
+behaviors:
+  SoccerBall:
+    trainer_type: ppo
+    hyperparameters:
+      batch_size: 10
+      buffer_size: 100
+      learning_rate: 3.0e-4
+      beta: 5.0e-4
+      epsilon: 0.2
+      lambd: 0.99
+      num_epoch: 3
+      learning_rate_schedule: linear
+      beta_schedule: constant
+      epsilon_schedule: linear
+    network_settings:
+      normalize: false
+      hidden_units: 128
+      num_layers: 2
+    reward_signals:
+      extrinsic:
+        gamma: 0.99
+        strength: 1.0
+    max_steps: 500000
+    time_horizon: 64
+    summary_freq: 10000
+~~~
+
+Since this example creates a very simple training environment with only a few inputs and outputs, using small batch and buffer sizes speeds up the training considerably. However, if you add more complexity to the environment or change the reward or observation functions, you might also find that training performs better with different hyperparameter values. In addition to setting these hyperparameter values, the Agent DecisionFrequency parameter has a large effect on training time and success. A larger value reduces the number of decisions the training algorithm has to consider and, in this simple environment, speeds up training.
+
+To train your agent, run the following command before pressing Play in the Editor:
+
+~~~
+mlagents-learn config/rollerball_config.yaml --run-id=RollerBall
+~~~
+
+To monitor the statistics of Agent performance during training, use [TensorBoard](https://github.com/Unity-Technologies/ml-agents/blob/release_19_docs/docs/Using-Tensorboard.md).
 
 ## **What's Next<a name="WhatsNext"></a>**
 
-
-
-
+- Create Multiple Training Areas to Speed Up the Training Process.
+- Design Different Reward Functions to Train the Agent to Achieve more Tasks.
+- ...
 
 ## **Reference<a name="Reference"></a>**
 
